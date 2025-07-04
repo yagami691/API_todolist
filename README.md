@@ -97,11 +97,6 @@ application/json
 PUT /api/todolist/{id}
 ```
 
-**Paramètres (query)**
-- `title` (facultatif)
-- `description` (facultatif)
-- `status` (facultatif)
-
 **Exemple**
 ```
 PUT http://localhost:8080/api/todolist/6
