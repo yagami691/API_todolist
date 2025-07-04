@@ -30,7 +30,7 @@ Récupère la liste complète des tâches.
     "description": "Faire fonctionner les annotations avec IntelliJ",
     "status": "EN_COURS"
   },
-  ...
+  "..."
 ]
 ```
 
@@ -104,7 +104,14 @@ PUT /api/todolist/{id}
 
 **Exemple**
 ```
-PUT /api/todolist/5?title=Faire%20les%20courses%20à%20Carrefour&description=Acheter%20des%20légumes&status=TERMINE
+PUT http://localhost:8080/api/todolist/6
+Content-Type: application/json
+
+{
+  "title": "Appeler le médecin",
+  "description": "Prendre un rendez-vous pour un contrôle de routine",
+  "status": "EN_COURS"
+}
 ```
 
 **Réponse**
@@ -156,5 +163,6 @@ DELETE /api/todolist/5
 
 ### ✍️ Auteur
 Projet réalisé par 
+
 ## Nkounga Moise
-Projet réalisé avec Spring Boot, JPA, Lombok (optionnel)
+Projet réalisé avec Spring Boot, JPA, Lombok 

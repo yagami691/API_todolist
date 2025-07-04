@@ -20,27 +20,30 @@ public class TodolistController {
 
     @GetMapping("/filter")
     public List<Todolist> filterTodolists(@RequestParam Status status) {
+
         return todolistService.getTodolist(status);
     }
 
     @PostMapping
     public ResponseEntity<String> addTodolists(@RequestBody Todolist addTodo){
-           todolistService.addNewTodolist(addTodo);
+
+        todolistService.addNewTodolist(addTodo);
         return ResponseEntity.status(HttpStatus.CREATED).body("Todolist added successfully");
     }
-    @PutMapping(path = "{newId}")
-    public void updateTodolists(
-       @PathVariable ("newId") Long id,
-       @RequestParam (required = false) String title,
-       @RequestParam (required = false) String description,
-       @RequestParam (required = false) Status status){
-        todolistService.updateTodolist(id, title, description,status);
+
+    @PutMapping(  "{newId}")
+    public ResponseEntity<String> updateTodolists(
+       @PathVariable ("newId") Long id, @RequestBody Todolist updateTodo){
+
+        todolistService.updateTodolist(id, updateTodo.getTitle(), updateTodo.getDescription(),updateTodo.getStatus());
+        return ResponseEntity.status(HttpStatus.CREATED).body("Todolist updated successfully");
     }
 
 
     @DeleteMapping(path = "{todolistId}")
-    public void deleteTodolist(@PathVariable("todolistId") Long id){
+    public ResponseEntity<String> deleteTodolist(@PathVariable("todolistId") Long id){
         todolistService.deleteTodolist(id);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Todolist deleted successfully");
     }
 
 }

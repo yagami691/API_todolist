@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface TodolistRepository  extends JpaRepository<Todolist, Long>{
     List<Todolist> findAllByStatus(Status status);
-    List<Todolist> findAllByTitre(String titre);
+    List<Todolist> findAllByTitle(String titre);
     Optional<Todolist> findTodolistById(Long id);
 
 

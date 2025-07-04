@@ -9,6 +9,7 @@ import java.util.Objects;
 
 @Service
 public class TodolistService {
+
     TodolistRepository todolistRepository;
     @Autowired
     public TodolistService(TodolistRepository todolistRepository) {
@@ -20,7 +21,7 @@ public class TodolistService {
 
     }
     public void addNewTodolist(Todolist newTodolist) {
-        List<Todolist> existingTasks = todolistRepository.findAllByTitre(newTodolist.getTitre());
+        List<Todolist> existingTasks = todolistRepository.findAllByTitle(newTodolist.getTitle());
 
         boolean alreadyExists = existingTasks.stream()
                 .anyMatch(task ->
@@ -42,8 +43,8 @@ public class TodolistService {
                          "todolist with id "
                                  + newId + " does not exist"
                  ));
-         if(title!=null && !title.trim().isEmpty() && !newTodolistId.getTitre().equals(title)){
-               newTodolistId.setTitre(title);
+         if(title!=null && !title.trim().isEmpty() && !newTodolistId.getTitle().equals(title)){
+               newTodolistId.setTitle(title);
            }
         if(description!=null && !description.trim().isEmpty() && !newTodolistId.getDescription().equals(description)){
             newTodolistId.setDescription(description);

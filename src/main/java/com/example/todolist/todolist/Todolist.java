@@ -39,16 +39,19 @@
 package com.example.todolist.todolist;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Entity
-@Table
+@Getter
+@Setter
 public class Todolist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String titre;
+    private String title;
     private String description;
 
     @Enumerated(EnumType.STRING)
@@ -58,29 +61,11 @@ public class Todolist {
       
     }
 
-    public Todolist(String titre, String description, Status status){
-        this.titre = titre;
+    public Todolist(String title, String description, Status status){
+        this.title = title;
         this.description = description;
         this.status = status;
     }
 
-    public Todolist(Long id, String titre, String description, Status status) {
-        this.id = id;
-        this.titre = titre;
-        this.description = description;
-        this.status = status;
-    }
 
-    // Getters et setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public String getTitre() { return titre; }
-    public void setTitre(String titre) { this.titre = titre; }
-
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
-
-    public Status getStatus() { return status; }
-    public void setStatus(Status status) { this.status = status; }
 }
